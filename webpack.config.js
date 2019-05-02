@@ -10,7 +10,7 @@ module.exports = {
 
   output: {
     filename: "bundle.js",
-    path: path.join(__dirname, "/build")
+    path: path.join(__dirname, "/public")
   },
 
   devtool: "source-map",
@@ -30,7 +30,11 @@ module.exports = {
         test: /\.scss$/,
         loaders: ['style-loader', 'css-loader', 'sass-loader'],
       },
-      {
+      { // for normalize.css
+        test: /\.css$/,
+        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }]
+      },
+      { // for index.html
         test: /\.html$/,
         use: [
           {
